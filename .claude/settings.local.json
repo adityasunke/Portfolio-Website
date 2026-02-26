@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/home/adityasunke04/Portfolio-Website log --oneline --all)",
+      "Bash(netstat -ano)",
+      "Bash(npm run build)"
+    ]
+  }
+}
