@@ -53,7 +53,7 @@ export default function HeroSection() {
         </p>
 
         <p
-          className="text-base sm:text-lg text-text-secondary font-sans max-w-2xl mx-auto mb-10"
+          className="text-base sm:text-lg text-text-secondary/80 font-sans max-w-2xl mx-auto mb-10"
           style={{ animation: 'fadeUp 0.6s ease-out 0.4s both' }}
         >
           Building at the intersection of quantum computing, AI, and scalable software systems.
