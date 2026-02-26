@@ -1,4 +1,5 @@
 import Button from '@/components/ui/Button'
+import { ChevronDown } from 'lucide-react'
 
 export default function HeroSection() {
   return (
@@ -70,8 +71,17 @@ export default function HeroSection() {
             Explore Computer Science
           </Button>
         </div>
-
       </div>
+
+      {/* Scroll to About */}
+      <a
+        href="#about"
+        aria-label="Scroll to About"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all duration-200 animate-float-fast"
+        style={{ animation: 'fadeUp 0.6s ease-out 0.8s both' }}
+      >
+        <ChevronDown size={20} className="text-text-secondary" />
+      </a>
 
       <style>{`
         @keyframes fadeUp {
