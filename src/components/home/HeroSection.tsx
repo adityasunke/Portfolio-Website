@@ -53,8 +53,8 @@ export default function HeroSection() {
         </p>
 
         <p
-          className="text-base sm:text-lg text-text-secondary/80 font-sans max-w-2xl mx-auto mb-10"
-          style={{ animation: 'fadeUp 0.6s ease-out 0.4s both' }}
+          className="text-base sm:text-lg font-sans max-w-2xl mx-auto mb-10"
+          style={{ animation: 'fadeUp 0.6s ease-out 0.4s both', color: '#94a3b8' }}
         >
           Building at the intersection of quantum computing, AI, and scalable software systems.
         </p>
@@ -71,16 +71,6 @@ export default function HeroSection() {
           </Button>
         </div>
 
-        {/* Scroll indicator */}
-        <div
-          className="mt-16 flex flex-col items-center gap-2 opacity-50"
-          style={{ animation: 'fadeUp 0.6s ease-out 1s both' }}
-        >
-          <span className="text-xs text-text-secondary font-sans uppercase tracking-widest">
-            Scroll
-          </span>
-          <div className="w-px h-8 bg-gradient-to-b from-text-secondary/60 to-transparent animate-float-fast" />
-        </div>
       </div>
 
       <style>{`
