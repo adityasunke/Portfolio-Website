@@ -9,14 +9,18 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Opens default mail client with pre-filled fields
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`)
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)
-    window.open(`mailto:adityasunke04@gmail.com?subject=${subject}&body=${body}`)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+    if (res.ok) {
+      setSubmitted(true)
+      setFormData({ name: '', email: '', message: '' })
+      setTimeout(() => setSubmitted(false), 3000)
+    }
   }
 
   return (
@@ -42,7 +46,7 @@ export default function ContactSection() {
 
             <div className="space-y-4">
               <a
-                href="mailto:adityasunke04@gmail.com"
+                href="mailto:adityasunke2004@vt.edu"
                 className="flex items-center gap-3 text-text-secondary hover:text-quantum-secondary transition-colors group"
               >
                 <div className="w-10 h-10 rounded-lg bg-quantum-primary/10 border border-quantum-primary/20 flex items-center justify-center group-hover:bg-quantum-primary/20 transition-colors">
@@ -50,12 +54,12 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-text-secondary font-sans">Email</p>
-                  <p className="text-text-primary text-sm font-medium font-sans">adityasunke04@gmail.com</p>
+                  <p className="text-text-primary text-sm font-medium font-sans">adityasunke2004@vt.edu</p>
                 </div>
               </a>
 
               <a
-                href="https://linkedin.com/in/adityasunke"
+                href="https://www.linkedin.com/in/aditya-sunke/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-text-secondary hover:text-cs-secondary transition-colors group"
@@ -65,12 +69,12 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-text-secondary font-sans">LinkedIn</p>
-                  <p className="text-text-primary text-sm font-medium font-sans">linkedin.com/in/adityasunke</p>
+                  <p className="text-text-primary text-sm font-medium font-sans">linkedin.com/in/aditya-sunke</p>
                 </div>
               </a>
 
               <a
-                href="https://github.com/adityasunke04"
+                href="https://github.com/adityasunke"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-text-secondary hover:text-text-primary transition-colors group"
@@ -80,7 +84,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-xs text-text-secondary font-sans">GitHub</p>
-                  <p className="text-text-primary text-sm font-medium font-sans">github.com/adityasunke04</p>
+                  <p className="text-text-primary text-sm font-medium font-sans">github.com/adityasunke</p>
                 </div>
               </a>
 

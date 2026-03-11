@@ -44,7 +44,7 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-2">
               <a
-                href="https://linkedin.com/in/adityasunke"
+                href="https://www.linkedin.com/in/aditya-sunke/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-text-secondary hover:text-cs-secondary transition-colors font-sans"
@@ -53,7 +53,7 @@ export default function Footer() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/adityasunke04"
+                href="https://github.com/adityasunke"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors font-sans"
@@ -62,7 +62,7 @@ export default function Footer() {
                 GitHub
               </a>
               <a
-                href="mailto:aditya@vt.edu"
+                href="mailto:adityasunke2004@vt.edu"
                 className="flex items-center gap-2 text-sm text-text-secondary hover:text-text-primary transition-colors font-sans"
               >
                 <Mail size={14} />
