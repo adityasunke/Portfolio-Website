@@ -8,18 +8,30 @@ import { Mail, Linkedin, Github, MapPin, Send, Download } from 'lucide-react'
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    })
-    if (res.ok) {
-      setSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setSubmitted(false), 3000)
+    setLoading(true)
+    setError(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setSubmitted(false), 3000)
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -165,16 +177,26 @@ export default function ContactSection() {
                   className="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text-primary text-sm placeholder:text-text-secondary/50 font-sans focus:outline-none focus:border-quantum-primary/60 focus:ring-1 focus:ring-quantum-primary/30 transition-all resize-none"
                 />
               </div>
+              {error && (
+                <p className="text-red-400 text-sm font-sans text-center">
+                  Something went wrong. Please try again.
+                </p>
+              )}
               <button
                 type="submit"
+                disabled={loading || submitted}
                 className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 font-sans ${
                   submitted
                     ? 'bg-green-600 cursor-default'
+                    : loading
+                    ? 'bg-quantum-primary/60 cursor-not-allowed'
                     : 'bg-quantum-primary hover:bg-quantum-secondary shadow-[0_0_24px_rgba(124,58,237,0.25)] hover:shadow-[0_0_32px_rgba(168,85,247,0.35)]'
                 }`}
               >
                 {submitted ? (
-                  <>Mail client opened!</>
+                  <>Message sent!</>
+                ) : loading ? (
+                  <>Sending...</>
                 ) : (
                   <>
                     <Send size={15} />
